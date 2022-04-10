@@ -11,22 +11,26 @@ chomp($PATH);
 print("Source: ".$PATH. "\n\n");
 
 #Varaible who represents the number of repetitions for each executable file   
-$N = 31;
+$N = 36;
 #Vector of executable benchmarks
-@ejecutables = ("exeBenchC", "exeBenchCPP","exeBenchCPP_reference");
+@ejecutables = ("MMPosix", "MM1cOMP","MM1fOMP");
 
 #Vector NxN for matrix
-@matrix_size = ("100", "300", "600", "1000","2000");
+@matrix_size = ("100", "600","1200","2200","3200");
+#Vector  threads to execute
+@threadsN = ("1","2","4");
 
 foreach $exe (@ejecutables){
     foreach $size (@matrix_size){
-        $file = "$PATH/"."registros/"."$exe"."-$size".".txt";
-        #print($file."\n");
-        for ($i = 0; $i < $N; $i++){
-            #print("$PATH/$exe $size \n");
-            system "$PATH/$exe $size >> $file";
+        foreach $thread (@threadsN){
+            $file = "$PATH/"."registros/"."$exe"."-$size"."-$thread".".txt";
+            #print($file."\n");
+            for ($i = 0; $i < $N; $i++){
+                #print("$PATH/$exe $size $thread \n");
+                system "$PATH/$exe $size $thread >> $file";
+            }
+            close $file; 
         }
-        close $file; 
     }
 }
 exit(0);

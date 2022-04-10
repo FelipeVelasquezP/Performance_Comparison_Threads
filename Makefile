@@ -4,7 +4,6 @@ CFLAGS = -lm -lpthread -fopenmp
 
 PROGS: MMPosix MM1cOMP MM1fOMP
 
-
 MM1cOMP:
 	$(GCC) $(FLAGS) modulo.c -c $(CFLAGS)
 	$(GCC) $(FLAGS) $@.c -c $(CFLAGS)
