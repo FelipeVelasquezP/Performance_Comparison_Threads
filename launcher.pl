@@ -16,7 +16,7 @@ $N = 36;
 @ejecutables = ("MMPosix", "MM1cOMP","MM1fOMP");
 
 #Vector NxN for matrix
-@matrix_size = ("100", "600","1200","2200","3200");
+@matrix_size = ("100","800","1600","2400","3200");
 #Vector  threads to execute
 @threadsN = ("1","2","4");
 
